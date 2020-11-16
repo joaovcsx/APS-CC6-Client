@@ -1,0 +1,13 @@
+<ion-spinner *ngIf="loading"
+  class="loading-spinner" name="lines" color="tertiary">
+</ion-spinner>
+
+<label *ngIf="!fingerprint">
+  <img class="img-responsive" src="/assets/upload.png" alt="image">
+  <input id="upload-image" type="file" style="display: none" (change)="addAttachment($event)" accept="image/*">
+</label>
+
+<card-fingerprint
+  *ngIf="fingerprint" 
+  [fingerprint]="fingerprint"
+  (onClose)=clear()></card-fingerprint>

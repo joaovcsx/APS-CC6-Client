@@ -3,12 +3,13 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>{{ pageName }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">{{ folder }}</ion-title>
     </ion-toolbar>
@@ -17,5 +18,25 @@
   <div id="container">
     <strong class="capitalize">{{ folder }}</strong>
     <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div> -->
+
+  <div [ngSwitch]="folder">
+
+    <div *ngSwitchCase="'fingerprints'">
+      <app-fingerprint></app-fingerprint>
+    </div>
+
+    <div *ngSwitchCase="'fingerprints-exists'">
+      <fingerprints-exists></fingerprints-exists>
+    </div>
+
+    <div *ngSwitchDefault>
+      <ion-header collapse="condense">
+        <ion-toolbar>
+          <ion-title size="large"> Sistema de Digitais</ion-title>
+        </ion-toolbar>
+      </ion-header>
+    </div>
   </div>
+  
 </ion-content>
