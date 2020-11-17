@@ -1,0 +1,38 @@
+.imageFinger { 
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: grid;
+    border-radius: 30%;
+}
+
+.item-input {
+    margin-bottom: 15px;
+}
+
+.title-center {
+    text-align: center;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button-save {
+    margin-left: auto;
+    font-size: 15px;
+}
+
+.loading-spinner {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+.invalid {
+    margin-top: 20px;
+}

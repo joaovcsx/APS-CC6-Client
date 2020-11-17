@@ -1,0 +1,27 @@
+<h2 class="title-center">Inserir nova digital no Banco de Dados</h2>
+
+<ion-spinner *ngIf="!imgURL || loading"
+  class="loading-spinner" name="lines" color="tertiary">
+</ion-spinner>
+
+<div *ngIf="imgURL && !loading">
+  <img class="imageFinger" [src]="imgURL">
+    <!-- *ngIf="imgURL" -->
+
+  <ion-item class="item-input">
+    <ion-label floating class="floating-placeholder">Nome: </ion-label>
+    <ion-input  [(ngModel)]="name"></ion-input>
+  </ion-item>
+
+  <ion-item class="item-input">
+    <ion-label floating class="floating-placeholder">Nível: </ion-label>
+    <ion-input type="number" [(ngModel)]="level"></ion-input>
+  </ion-item>
+
+  <ion-item color='none' lines="none">
+    <ion-button class="button-save" (click)="create()" ion-button end>
+      salvar
+    </ion-button>
+  </ion-item>
+</div>
+<ion-note *ngIf="invalid" class="invalid" color="danger">{{invalid}}</ion-note>

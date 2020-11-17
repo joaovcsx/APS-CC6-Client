@@ -34,7 +34,20 @@ export class ApiService {
         response => subscriber.next(response as IFingerprint),
         (error) => subscriber.next(error)         
       );
+    });
+  }
 
+  public postFingerprints(params: IParamsFingerprintExists): Observable<{}> {
+    return new Observable<IFingerprint>(subscriber => {
+      const url = this._appService.apiURL() + '/fingerprints';
+      const formData = new FormData();
+      formData.append('uploadFile', params.uploadFile);
+      formData.append('name', params.name);
+      formData.append('level', String(params.level));
+      this._http.post(url, formData).subscribe(
+        response => subscriber.next(response),
+        (error) => subscriber.next(error)         
+      );
     });
   }
 

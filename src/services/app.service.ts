@@ -12,8 +12,11 @@ export class AppService {
   apiURL(): string {
     if (this.url != '')
       return this.url
-    else {
-      return ''
-    }
+    // else {
+    //   this._fb.getUrlApiDatabase().subscribe(api => {
+    //     this.url = api.url;
+    //     console.log(this.url);
+    //     return this.url
+    //   });
   }
 }

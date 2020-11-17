@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-folder',
@@ -10,7 +11,10 @@ export class FolderPage implements OnInit {
   public folder: string;
   public pageName: string;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private _fb: FirebaseService
+    ) { }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
@@ -27,6 +31,10 @@ export class FolderPage implements OnInit {
         this.pageName = '';
       }
     }
+
+    // this._fb.getUrlApiDatabase().subscribe(api => {
+    //   console.log(api);
+    // });
     
   }
 

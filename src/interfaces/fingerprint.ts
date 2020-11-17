@@ -22,4 +22,6 @@ export interface IPixels {
 
 export interface IParamsFingerprintExists {
     uploadFile?: File;
+    name?: string;
+    level?: number;
 }

@@ -2,15 +2,17 @@
 <ion-spinner *ngIf="loading"
   class="loading-spinner" name="lines" color="tertiary">
 </ion-spinner>
+<div  *ngIf="!loading">
+  <div *ngFor="let fingerprint of fingerprints">
+    <card-fingerprint
+      [fingerprint]=fingerprint>
+    </card-fingerprint>
+  </div>
 
-<div *ngFor="let fingerprint of fingerprints">
-  <card-fingerprint
-    [fingerprint]=fingerprint>
-  </card-fingerprint>
+  <ion-fab class="fab"vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="hiddenfileinput.click()">
+      <input style="display: none" type="file" (change)="addFingerprint($event)" #hiddenfileinput>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </div>
-
-<ion-fab class="fab"vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button>
-    <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
-</ion-fab>

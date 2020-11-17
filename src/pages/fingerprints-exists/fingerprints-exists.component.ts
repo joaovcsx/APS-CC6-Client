@@ -29,8 +29,6 @@ export class FingerprintsExistsComponent implements OnInit {
       this._apiService.postFingerprintsExists(params).subscribe(
         fingerprint => {
           this.fingerprint = fingerprint;
-          console.log('caiu');
-          console.log(this.fingerprint);
           this.loading = false;
         },
         error => {
@@ -42,7 +40,6 @@ export class FingerprintsExistsComponent implements OnInit {
   }
   
   clear(): void {
-    console.log('casiujf')
     this.fingerprint = undefined;
   }
 }
