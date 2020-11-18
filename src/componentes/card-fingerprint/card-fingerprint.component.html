@@ -25,9 +25,12 @@
       </ion-badge>
       <span class="name">{{name}}</span>
     </div>
-    
   </ion-item>
 </ion-card>
+
+<ion-button *ngIf="buttonClose" color="light" class="closeButton" (click)="closeCard()">
+  Inserir outra digital
+</ion-button>
 
 <ng-template #invalid>
   <ion-badge color="secondary" class="fingerInvalid" text-wrap>

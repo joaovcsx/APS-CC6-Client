@@ -12,11 +12,7 @@ import { FingerprintFormComponent } from '../../componentes/fingerprint-form/fin
 // Angular material
 import { MatDialogModule }          from '@angular/material/dialog';
 import { MatFormFieldModule }       from '@angular/material/form-field';
-// Firebase 
-import { AngularFireModule }        from '@angular/fire';
-import { environment }              from '../../environments/environment';
-import { AngularFirestoreModule }   from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+
 
 @NgModule({
   imports: [
@@ -26,9 +22,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     FolderPageRoutingModule,
     MatDialogModule,
     MatFormFieldModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireStorageModule
   ],
   declarations: [
     FolderPage,

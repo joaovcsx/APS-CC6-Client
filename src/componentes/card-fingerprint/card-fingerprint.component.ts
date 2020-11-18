@@ -11,6 +11,7 @@ import { IFingerprint } from '../../interfaces/fingerprint';
 export class CardFingerprintComponent implements OnInit {
 
   @Input() fingerprint: IFingerprint;
+  @Input() buttonClose: boolean = false;
   @Output() onClose: EventEmitter<any> = new EventEmitter();
   public name: string = 'Sem registro de nome';
   public level: number = 0;

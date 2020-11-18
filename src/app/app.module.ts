@@ -11,6 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule }         from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+// Firebase 
+import { AngularFireModule }        from '@angular/fire';
+import { environment }              from '../environments/environment';
+import { AngularFirestoreModule }   from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,6 +27,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     NoopAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,

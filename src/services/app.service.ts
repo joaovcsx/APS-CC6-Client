@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
+import { FirebaseService } from '../services/firebase.service';
+import { Observable }      from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
 
-  constructor() { }
+  constructor(
+    private _fb: FirebaseService
+  ) { }
 
-  public url:string = 'http://127.0.0.1:8050/v1';
+  // public url:string = '';
+  public url:string = 'https://dd765f9c964c.ngrok.io/v1';
 
   apiURL(): string {
-    if (this.url != '')
-      return this.url
-    // else {
-    //   this._fb.getUrlApiDatabase().subscribe(api => {
-    //     this.url = api.url;
-    //     console.log(this.url);
-    //     return this.url
-    //   });
+    return this.url;
+  }
+
+  setURL(url: string): Observable<string> {
+    this.url = url;
+    return new Observable<string>(subscriber => {
+      subscriber.next('start')
+    });
   }
 }

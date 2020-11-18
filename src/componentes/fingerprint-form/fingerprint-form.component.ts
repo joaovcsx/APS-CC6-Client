@@ -32,9 +32,9 @@ export class FingerprintFormComponent implements OnInit {
   create() {
     if (!this.name || this.name.trim() == '')
       this.invalidFields('"Nome"');
-    if (!this.level)
+    if (!this.level || !(this.level in [0, 1, 2, 3]))
       this.invalidFields('"Nível"');
-    if (this.name && this.level) {
+    if (this.name && this.level && this.level in [0, 1, 2, 3]) {
       this.loading = true;
       let params: IParamsFingerprintExists = {
         name: this.name.trim(),
@@ -61,7 +61,7 @@ export class FingerprintFormComponent implements OnInit {
   }
 
   invalidFields(fielInvalid: string) {
-    this.invalid = 'Campo ' + fielInvalid + ' inválido';
+    this.invalid = 'Campo ' + fielInvalid + ' inválido. O nível deve ser entre 0 a 3.';
     setTimeout(() => {
       this.invalid = ''}, 3000);
   }

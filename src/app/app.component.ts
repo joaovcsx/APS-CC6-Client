@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { FirebaseService } from '../services/firebase.service';
+import { AppService } from '../services/app.service';
 
 @Component({
   selector: 'app-root',
@@ -45,23 +47,26 @@ export class AppComponent implements OnInit {
   // ];
   public appPages = [
     {
-      title: 'Banco de digitais',
-      url: '/folder/fingerprints',
-      icon: 'finger-print'
-    },
-    {
       title: 'Consulta de digitais',
       url: '/folder/fingerprints-exists',
       icon: 'file-tray-full'
+    },
+    {
+      title: 'Banco de digitais',
+      url: '/folder/fingerprints',
+      icon: 'finger-print'
     }
   ];
   // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   public labels = [];
+  public url: string;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private _fb: FirebaseService,
+    private _app: AppService
   ) {
     this.initializeApp();
   }
@@ -70,6 +75,11 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this._fb.getUrlApiDatabase().subscribe(
+        response => {
+          this._app.setURL(response.url).subscribe(
+            () => this.url = this._app.apiURL())
+        })
     });
   }
 
